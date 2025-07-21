@@ -23,15 +23,9 @@
     "link-all": "npm link --workspaces"
   },
   "dependencies": {
-    "@oppie-ai/server-everything": "*",
-    "@oppie-ai/server-gdrive": "*",
-    "@oppie-ai/server-postgres": "*",
-    "@oppie-ai/server-puppeteer": "*",
-    "@oppie-ai/server-slack": "*",
-    "@oppie-ai/server-brave-search": "*",
-    "@oppie-ai/server-memory": "*",
-    "@oppie-ai/server-filesystem": "*",
-    "@oppie-ai/server-everart": "*",
-    "@oppie-ai/server-sequential-thinking": "*"
+    "@oppie-ai/mcp-gdrive": "*",
+    "@oppie-ai/mcp-slack": "*",
+    "@oppie-ai/mcp-github": "*",
+    "@oppie-ai/mcp-postgres": "*"
   }
 }

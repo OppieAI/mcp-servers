@@ -10,7 +10,11 @@ import { z } from "zod";
 import { createClient } from 'redis';
 
 // Configuration
-const REDIS_URL = process.argv[2] || "redis://localhost:6379";
+const REDIS_URL = process.env.REDIS_URL;
+if (!REDIS_URL) {
+    console.error("Please set REDIS_URL environment variable");
+    process.exit(1);
+}
 const MAX_RETRIES = 5;
 const MIN_RETRY_DELAY = 1000; // 1 second
 const MAX_RETRY_DELAY = 30000; // 30 seconds

@@ -56,6 +56,15 @@ A Model Context Protocol server that provides access to Redis databases. This se
   - List Redis keys matching a pattern
   - Input: `pattern` (string, optional): Pattern to match keys (default: *)
 
+## Configuration
+
+The server requires a `REDIS_URL` environment variable containing the Redis connection string.
+
+Examples:
+- Basic: `redis://localhost:6379`
+- With password: `redis://:password@localhost:6379`
+- With username and password: `redis://username:password@localhost:6379`
+
 ## Usage with Claude Desktop
 
 To use this server with the Claude Desktop app, add the following configuration to the "mcpServers" section of your `claude_desktop_config.json`:
@@ -63,7 +72,7 @@ To use this server with the Claude Desktop app, add the following configuration 
 ### Docker
 
 * when running docker on macos, use host.docker.internal if the server is running on the host network (eg localhost)
-* Redis URL can be specified as an argument, defaults to "redis://localhost:6379" (use "redis://127.0.0.1:6379" if localhost fails)
+* Redis URL should be set via the REDIS_URL environment variable (use "redis://127.0.0.1:6379" if localhost fails)
 
 ```json
 {
@@ -73,9 +82,14 @@ To use this server with the Claude Desktop app, add the following configuration 
       "args": [
         "run", 
         "-i", 
-        "--rm", 
-        "mcp/redis", 
-        "redis://host.docker.internal:6379"]
+        "--rm",
+        "-e",
+        "REDIS_URL",
+        "mcp/redis"
+      ],
+      "env": {
+        "REDIS_URL": "redis://host.docker.internal:6379"
+      }
     }
   }
 }
@@ -90,9 +104,11 @@ To use this server with the Claude Desktop app, add the following configuration 
       "command": "npx",
       "args": [
         "-y",
-        "@modelcontextprotocol/server-redis",
-        "redis://localhost:6379"
-      ]
+        "@oppie-ai/mcp-redis"
+      ],
+      "env": {
+        "REDIS_URL": "redis://localhost:6379"
+      }
     }
   }
 }
@@ -102,7 +118,7 @@ To use this server with the Claude Desktop app, add the following configuration 
 
 For quick installation, use one of the one-click install buttons below...
 
-[![Install with NPX in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=redis&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22redis_url%22%2C%22description%22%3A%22Redis%20URL%20(e.g.%20redis%3A%2F%2Flocalhost%3A6379)%22%7D%5D&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-redis%22%5D%2C%22env%22%3A%7B%22REDIS_URL%22%3A%22%24%7Binput%3Aredis_url%7D%22%7D%7D) [![Install with NPX in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=redis&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22redis_url%22%2C%22description%22%3A%22Redis%20URL%20(e.g.%20redis%3A%2F%2Flocalhost%3A6379)%22%7D%5D&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-redis%22%5D%2C%22env%22%3A%7B%22REDIS_URL%22%3A%22%24%7Binput%3Aredis_url%7D%22%7D%7D&quality=insiders)
+[![Install with NPX in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=redis&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22redis_url%22%2C%22description%22%3A%22Redis%20URL%20(e.g.%20redis%3A%2F%2Flocalhost%3A6379)%22%7D%5D&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40oppie-ai%2Fmcp-redis%22%5D%2C%22env%22%3A%7B%22REDIS_URL%22%3A%22%24%7Binput%3Aredis_url%7D%22%7D%7D) [![Install with NPX in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=redis&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22redis_url%22%2C%22description%22%3A%22Redis%20URL%20(e.g.%20redis%3A%2F%2Flocalhost%3A6379)%22%7D%5D&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40oppie-ai%2Fmcp-redis%22%5D%2C%22env%22%3A%7B%22REDIS_URL%22%3A%22%24%7Binput%3Aredis_url%7D%22%7D%7D&quality=insiders)
 
 [![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=redis&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22redis_url%22%2C%22description%22%3A%22Redis%20URL%20(e.g.%20redis%3A%2F%2Fhost.docker.internal%3A6379)%22%7D%5D&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22mcp%2Fredis%22%5D%2C%22env%22%3A%7B%22REDIS_URL%22%3A%22%24%7Binput%3Aredis_url%7D%22%7D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=redis&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22redis_url%22%2C%22description%22%3A%22Redis%20URL%20(e.g.%20redis%3A%2F%2Fhost.docker.internal%3A6379)%22%7D%5D&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22mcp%2Fredis%22%5D%2C%22env%22%3A%7B%22REDIS_URL%22%3A%22%24%7Binput%3Aredis_url%7D%22%7D%7D&quality=insiders)
 
@@ -125,7 +141,7 @@ Optionally, you can add it to a file called `.vscode/mcp.json` in your workspace
     "servers": {
       "redis": {
         "command": "npx",
-        "args": ["-y", "@modelcontextprotocol/server-redis"],
+        "args": ["-y", "@oppie-ai/mcp-redis"],
         "env": {
           "REDIS_URL": "${input:redis_url}"
         }
@@ -150,7 +166,7 @@ For Docker installation:
     "servers": {
       "redis": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "mcp/redis"],
+        "args": ["run", "-i", "--rm", "-e", "REDIS_URL", "mcp/redis"],
         "env": {
           "REDIS_URL": "${input:redis_url}"
         }

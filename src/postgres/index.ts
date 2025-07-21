@@ -23,13 +23,11 @@ const server = new Server(
   },
 );
 
-const args = process.argv.slice(2);
-if (args.length === 0) {
-  console.error("Please provide a database URL as a command-line argument");
+const databaseUrl = process.env.DATABASE_URL;
+if (!databaseUrl) {
+  console.error("Please set DATABASE_URL environment variable");
   process.exit(1);
 }
-
-const databaseUrl = args[0];
 
 const resourceBaseUrl = new URL(databaseUrl);
 resourceBaseUrl.protocol = "postgres:";

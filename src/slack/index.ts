@@ -229,16 +229,16 @@ class SlackClient {
         limit: Math.min(limit, 200).toString(),
         team_id: process.env.SLACK_TEAM_ID!,
       });
-  
+
       if (cursor) {
         params.append("cursor", cursor);
       }
-  
+
       const response = await fetch(
         `https://slack.com/api/conversations.list?${params}`,
         { headers: this.botHeaders },
       );
-  
+
       return response.json();
     }
 
@@ -381,12 +381,12 @@ class SlackClient {
 }
 
 async function main() {
-  const botToken = process.env.SLACK_BOT_TOKEN;
+  const botToken = process.env.ACCESS_TOKEN;
   const teamId = process.env.SLACK_TEAM_ID;
 
-  if (!botToken || !teamId) {
+  if (!botToken) {
     console.error(
-      "Please set SLACK_BOT_TOKEN and SLACK_TEAM_ID environment variables",
+      "Please set ACCESS_TOKEN and SLACK_TEAM_ID environment variables",
     );
     process.exit(1);
   }
