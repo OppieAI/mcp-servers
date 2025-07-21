@@ -26,6 +26,7 @@
     "@oppie-ai/mcp-gdrive": "*",
     "@oppie-ai/mcp-slack": "*",
     "@oppie-ai/mcp-github": "*",
-    "@oppie-ai/mcp-postgres": "*"
+    "@oppie-ai/mcp-postgres": "*",
+    "@oppie-ai/mcp-redis": "*"
   }
 }

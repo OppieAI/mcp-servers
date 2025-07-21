@@ -55,15 +55,10 @@ chmod +x oppie-bridge
 
 | MCP Server | Oppie Compatible | One-Click Deploy | OAuth Handled | Cloud Performance | Natural Language Config |
 |------------|------------------|------------------|---------------|-------------------|------------------------|
-| **AWS KB Retrieval** | ✅ | ✅ | ✅ | ⚡ Optimized | ✅ |
-| **Brave Search** | ✅ | ✅ | ✅ | ⚡ Cached | ✅ |
-| **EverArt** | ✅ | ✅ | ✅ | ⚡ GPU-powered | ✅ |
 | **GitHub** | ✅ | ✅ | ✅ | ⚡ Rate-limit managed | ✅ |
 | **GitLab** | ✅ | ✅ | ✅ | ⚡ Auto-scaled | ✅ |
 | **Google Drive** | ✅ | ✅ | ✅ | ⚡ Edge cached | ✅ |
-| **Google Maps** | ✅ | ✅ | ✅ | ⚡ Geo-distributed | ✅ |
 | **PostgreSQL** | ✅ | ✅ | ✅ | ⚡ Connection pooled | ✅ |
-| **Puppeteer** | ✅ | ✅ | N/A | ⚡ Headless cluster | ✅ |
 | **Redis** | ✅ | ✅ | ✅ | ⚡ Managed cluster | ✅ |
 | **Slack** | ✅ | ✅ | ✅ | ⚡ WebSocket pooled | ✅ |
 
@@ -113,15 +108,10 @@ AI Client (Claude/Cursor) ← → Oppie Bridge ← → Oppie Cloud ← → MCP S
 
 The following servers are included in this repository:
 
-- **[AWS KB Retrieval](https://github.com/OppieAI/mcp-servers/blob/main/src/aws-kb-retrieval-server/README.md)** - Integration with AWS Knowledge Base
-- **[Brave Search](https://github.com/OppieAI/mcp-servers/blob/main/src/brave-search/README.md)** - Web search capabilities via Brave Search API
-- **[EverArt](https://github.com/OppieAI/mcp-servers/blob/main/src/everart/README.md)** - AI art generation integration
 - **[GitHub](https://github.com/OppieAI/mcp-servers/blob/main/src/github/README.md)** - GitHub API integration for repository management
 - **[GitLab](https://github.com/OppieAI/mcp-servers/blob/main/src/gitlab/README.md)** - GitLab API integration for repository management
 - **[Google Drive](https://github.com/OppieAI/mcp-servers/blob/main/src/gdrive/README.md)** - Google Drive file access and search (updated with simplified authentication)
-- **[Google Maps](https://github.com/OppieAI/mcp-servers/blob/main/src/google-maps/README.md)** - Google Maps integration for location services
 - **[PostgreSQL](https://github.com/OppieAI/mcp-servers/blob/main/src/postgres/README.md)** - PostgreSQL database connectivity
-- **[Puppeteer](https://github.com/OppieAI/mcp-servers/blob/main/src/puppeteer/README.md)** - Web automation and scraping
 - **[Redis](https://github.com/OppieAI/mcp-servers/blob/main/src/redis/README.md)** - Redis database connectivity
 - **[Slack](https://github.com/OppieAI/mcp-servers/blob/main/src/slack/README.md)** - Slack workspace integration
 
