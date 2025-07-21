@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
-  release:
-    types: [published]
+  workflow_dispatch:
 
 jobs:
   detect-packages:
@@ -60,26 +58,3 @@ jobs:
           name: dist-${{ matrix.package }}
           path: src/${{ matrix.package }}/dist/
 
-  publish:
-    runs-on: ubuntu-latest
-    needs: [build, detect-packages]
-    if: github.event_name == 'release' && needs.detect-packages.outputs.packages != '[]'
-
-    strategy:
-      matrix:
-        package: ${{ fromJson(needs.detect-packages.outputs.packages) }}
-    name: Publish ${{ matrix.package }}
-
-    environment: release
-    permissions:
-      id-token: write # Required for trusted publishing
-
-    steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist-${{ matrix.package }}
-          path: dist/
-
-      - name: Publish package to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
