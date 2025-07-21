@@ -10,7 +10,7 @@ RUN npm run build
 
 FROM node:22-alpine AS release
 
-COPY --from=builder /app/build /app/build
+COPY --from=builder /app/dist /app/dist
 COPY --from=builder /app/package.json /app/package.json
 COPY --from=builder /app/package-lock.json /app/package-lock.json
 
@@ -20,4 +20,4 @@ WORKDIR /app
 
 RUN npm ci --ignore-scripts --omit-dev
 
-ENTRYPOINT ["node", "build/index.js"]
+ENTRYPOINT ["node", "dist/index.js"]
