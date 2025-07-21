@@ -1,11 +1,15 @@
 {
-  "name": "@modelcontextprotocol/server-gitlab",
+  "name": "@oppie-ai/mcp-gitlab",
   "version": "0.6.2",
   "description": "MCP server for using the GitLab API",
   "license": "MIT",
-  "author": "GitLab, PBC (https://gitlab.com)",
-  "homepage": "https://modelcontextprotocol.io",
-  "bugs": "https://github.com/modelcontextprotocol/servers/issues",
+  "author": "Oppie AI",
+  "homepage": "https://oppie.ai",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OppieAI/mcp-servers.git"
+  },
+  "bugs": "https://github.com/OppieAI/mcp-servers/issues",
   "type": "module",
   "bin": {
     "mcp-server-gitlab": "dist/index.js"

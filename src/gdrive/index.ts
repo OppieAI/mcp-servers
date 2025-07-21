@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import { authenticate } from "@google-cloud/local-auth";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -9,16 +8,13 @@ import {
   ListToolsRequestSchema,
   ReadResourceRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import fs from "fs";
 import { google } from "googleapis";
-import path from "path";
-import { fileURLToPath } from 'url';
 
 const drive = google.drive("v3");
 
 const server = new Server(
   {
-    name: "example-servers/gdrive",
+    name: "oppie-example-servers/gdrive",
     version: "0.1.0",
   },
   {
@@ -176,44 +172,33 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   throw new Error("Tool not found");
 });
 
-const credentialsPath = process.env.GDRIVE_CREDENTIALS_PATH || path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "../../../.gdrive-server-credentials.json",
-);
+async function initializeGoogleAuth() {
+  const accessToken = process.env.ACCESS_TOKEN;
 
-async function authenticateAndSaveCredentials() {
-  console.log("Launching auth flow…");
-  const auth = await authenticate({
-    keyfilePath: process.env.GDRIVE_OAUTH_PATH || path.join(
-      path.dirname(fileURLToPath(import.meta.url)),
-      "../../../gcp-oauth.keys.json",
-    ),
-    scopes: ["https://www.googleapis.com/auth/drive.readonly"],
-  });
-  fs.writeFileSync(credentialsPath, JSON.stringify(auth.credentials));
-  console.log("Credentials saved. You can now run the server.");
-}
-
-async function loadCredentialsAndRunServer() {
-  if (!fs.existsSync(credentialsPath)) {
-    console.error(
-      "Credentials not found. Please run with 'auth' argument first.",
-    );
+  if (!accessToken) {
+    console.error("ACCESS_TOKEN environment variable is required.");
+    console.error("Please set ACCESS_TOKEN with a valid Google OAuth access token.");
     process.exit(1);
   }
 
-  const credentials = JSON.parse(fs.readFileSync(credentialsPath, "utf-8"));
-  const auth = new google.auth.OAuth2();
-  auth.setCredentials(credentials);
-  google.options({ auth });
+  const auth = new google.auth.OAuth2(
+    "dummy_client_id",
+    "dummy_client_secret",
+    "/dummy_redirect_uri"
+  );
+  auth.setCredentials({
+    access_token: accessToken,
+  });
 
-  console.error("Credentials loaded. Starting server.");
+  google.options({ auth });
+  console.error("Google authentication configured with access token.");
+}
+
+async function runServer() {
+  await initializeGoogleAuth();
+
   const transport = new StdioServerTransport();
   await server.connect(transport);
 }
 
-if (process.argv[2] === "auth") {
-  authenticateAndSaveCredentials().catch(console.error);
-} else {
-  loadCredentialsAndRunServer().catch(console.error);
-}
+runServer().catch(console.error);

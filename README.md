@@ -1,50 +1,38 @@
-# Model Context Protocol servers (ARCHIVED)
+# Model Context Protocol Servers
 
-⚠️ **IMPORTANT: This repository is archived and no longer maintained.**
+This repository contains actively maintained implementations of [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) servers. These servers were forked from the original archived repository and are now being actively maintained and improved.
 
-## Looking for MCP servers?
+## Available Servers
 
-This repository contains archived reference implementations that are no longer maintained.
+The following servers are included in this repository:
 
-**For the current, actively maintained MCP servers, please visit:**
+- **AWS KB Retrieval** - Integration with AWS Knowledge Base
+- **Brave Search** - Web search capabilities via Brave Search API
+- **EverArt** - AI art generation integration
+- **Git** - Git repository operations and management
+- **GitHub** - GitHub API integration for repository management
+- **GitLab** - GitLab API integration for repository management
+- **Google Drive** - Google Drive file access and search (updated with simplified authentication)
+- **Google Maps** - Google Maps integration for location services
+- **PostgreSQL** - PostgreSQL database connectivity
+- **Puppeteer** - Web automation and scraping
+- **Redis** - Redis database connectivity
+- **Sentry** - Error tracking and monitoring integration
+- **Slack** - Slack workspace integration
+- **SQLite** - SQLite database connectivity
 
-### 👉 [https://github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
+## Getting Started
 
-## About this Archive
-
-This repository contains historical reference implementations for the [Model Context Protocol](https://modelcontextprotocol.io/) (MCP). These servers were created to demonstrate MCP features and SDK capabilities but are now archived.
-
-### ⚠️ Security Notice
-
-**NO SECURITY GUARANTEES ARE PROVIDED FOR THESE ARCHIVED SERVERS.**
-
-- These servers are no longer maintained
-- No security updates or bug fixes will be provided
-- Use at your own risk
-- For production use, please refer to the actively maintained servers repository linked above
-
-## Archived Servers
-
-The following servers are included in this archive for historical reference:
-
-- AWS KB Retrieval
-- Brave Search
-- EverArt
-- Git
-- GitHub
-- GitLab
-- Google Drive
-- Google Maps
-- PostgreSQL
-- Puppeteer
-- Redis
-- Sentry
-- Slack
-- SQLite
+Each server has its own documentation in the respective `src/[server-name]/README.md` file. Please refer to the individual server documentation for setup and usage instructions.
 
 ## Contributing
 
-This repository is archived and no longer accepts contributions. For contributing to MCP servers, please visit the [active servers repository](https://github.com/modelcontextprotocol/servers).
+We welcome contributions to improve these servers! Please feel free to:
+
+- Submit bug reports and feature requests
+- Contribute code improvements and new features
+- Improve documentation
+- Add new MCP servers
 
 ## License
 
