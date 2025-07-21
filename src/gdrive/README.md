@@ -42,35 +42,47 @@ This server uses a simplified authentication approach that requires only an acce
 
 The server will authenticate using the provided access token without requiring OAuth client credentials or JSON files.
 
-### Usage with Desktop App
+### Usage with Claude Desktop
 
-To integrate this server with the desktop app, add the following to your app's server configuration:
+To use this server with the Claude Desktop app, add the following configuration to the "mcpServers" section of your `claude_desktop_config.json`:
 
-#### Local Build
-
-```json
-{
-  "mcpServers": {
-    "gdrive": {
-      "command": "node",
-      "args": ["./dist/index.js"],
-      "cwd": "/path/to/gdrive/server",
-      "env": {
-        "ACCESS_TOKEN": "your_google_oauth_access_token"
-      }
-    }
-  }
-}
-```
-
-#### Docker (if available)
+#### Docker
 
 ```json
 {
   "mcpServers": {
     "gdrive": {
       "command": "docker",
-      "args": ["run", "-i", "--rm", "-e", "ACCESS_TOKEN=your_google_oauth_access_token", "oppie/gdrive"]
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "ACCESS_TOKEN",
+        "oppieai/mcp-gdrive"
+      ],
+      "env": {
+        "ACCESS_TOKEN": "<YOUR_TOKEN>"
+      }
+    }
+  }
+}
+```
+
+#### NPX
+
+```json
+{
+  "mcpServers": {
+    "gdrive": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@oppie-ai/mcp-gdrive"
+      ],
+      "env": {
+        "ACCESS_TOKEN": "<YOUR_TOKEN>"
+      }
     }
   }
 }
