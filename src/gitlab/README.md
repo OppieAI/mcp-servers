@@ -97,7 +97,7 @@ MCP Server for the GitLab API, enabling project management, file operations, and
 
 ## Setup
 
-### Personal Access Token
+### Access Token
 [Create a GitLab Personal Access Token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) with appropriate permissions:
    - Go to User Settings > Access Tokens in GitLab
    - Select the required scopes:
@@ -120,13 +120,13 @@ Add the following to your `claude_desktop_config.json`:
         "--rm",
         "-i",
         "-e",
-        "GITLAB_PERSONAL_ACCESS_TOKEN",
+        "ACCESS_TOKEN",
         "-e",
         "GITLAB_API_URL",
-        "mcp/gitlab"
+        "oppieai/mcp-gitlab"
       ],
       "env": {
-        "GITLAB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>",
+        "ACCESS_TOKEN": "<YOUR_TOKEN>",
         "GITLAB_API_URL": "https://gitlab.com/api/v4" // Optional, for self-hosted instances
       }
     }
@@ -143,10 +143,10 @@ Add the following to your `claude_desktop_config.json`:
       "command": "npx",
       "args": [
         "-y",
-        "@modelcontextprotocol/server-gitlab"
+        "@oppie-ai/mcp-gitlab"
       ],
       "env": {
-        "GITLAB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>",
+        "ACCESS_TOKEN": "<YOUR_TOKEN>",
         "GITLAB_API_URL": "https://gitlab.com/api/v4" // Optional, for self-hosted instances
       }
     }
@@ -158,9 +158,9 @@ Add the following to your `claude_desktop_config.json`:
 
 For quick installation, use one of the one-click installation buttons below...
 
-[![Install with NPX in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=gitlab&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_url%22%2C%22description%22%3A%22GitLab%20API%20URL%20(optional%2C%20default%3A%20https%3A%2F%2Fgitlab.com%2Fapi%2Fv4)%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-gitlab%22%5D%2C%22env%22%3A%7B%22GITLAB_PERSONAL_ACCESS_TOKEN%22%3A%22%24%7Binput%3Agitlab_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_url%7D%22%7D%7D) [![Install with NPX in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=gitlab&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_url%22%2C%22description%22%3A%22GitLab%20API%20URL%20(optional%2C%20default%3A%20https%3A%2F%2Fgitlab.com%2Fapi%2Fv4)%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-gitlab%22%5D%2C%22env%22%3A%7B%22GITLAB_PERSONAL_ACCESS_TOKEN%22%3A%22%24%7Binput%3Agitlab_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_url%7D%22%7D%7D&quality=insiders)
+[![Install with NPX in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=gitlab&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22access_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_url%22%2C%22description%22%3A%22GitLab%20API%20URL%20(optional%2C%20default%3A%20https%3A%2F%2Fgitlab.com%2Fapi%2Fv4)%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40oppie-ai%2Fmcp-gitlab%22%5D%2C%22env%22%3A%7B%22ACCESS_TOKEN%22%3A%22%24%7Binput%3Aaccess_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_url%7D%22%7D%7D) [![Install with NPX in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=gitlab&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22access_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_url%22%2C%22description%22%3A%22GitLab%20API%20URL%20(optional%2C%20default%3A%20https%3A%2F%2Fgitlab.com%2Fapi%2Fv4)%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40oppie-ai%2Fmcp-gitlab%22%5D%2C%22env%22%3A%7B%22ACCESS_TOKEN%22%3A%22%24%7Binput%3Aaccess_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_url%7D%22%7D%7D&quality=insiders)
 
-[![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=gitlab&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_url%22%2C%22description%22%3A%22GitLab%20API%20URL%20(optional%2C%20default%3A%20https%3A%2F%2Fgitlab.com%2Fapi%2Fv4)%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22--rm%22%2C%22-i%22%2C%22mcp%2Fgitlab%22%5D%2C%22env%22%3A%7B%22GITLAB_PERSONAL_ACCESS_TOKEN%22%3A%22%24%7Binput%3Agitlab_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_url%7D%22%7D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=gitlab&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_url%22%2C%22description%22%3A%22GitLab%20API%20URL%20(optional%2C%20default%3A%20https%3A%2F%2Fgitlab.com%2Fapi%2Fv4)%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22--rm%22%2C%22-i%22%2C%22mcp%2Fgitlab%22%5D%2C%22env%22%3A%7B%22GITLAB_PERSONAL_ACCESS_TOKEN%22%3A%22%24%7Binput%3Agitlab_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_url%7D%22%7D%7D&quality=insiders)
+[![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=gitlab&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22access_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_url%22%2C%22description%22%3A%22GitLab%20API%20URL%20(optional%2C%20default%3A%20https%3A%2F%2Fgitlab.com%2Fapi%2Fv4)%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22--rm%22%2C%22-i%22%2C%22oppieai%2Fmcp-gitlab%22%5D%2C%22env%22%3A%7B%22ACCESS_TOKEN%22%3A%22%24%7Binput%3Aaccess_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_url%7D%22%7D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=gitlab&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22access_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22gitlab_url%22%2C%22description%22%3A%22GitLab%20API%20URL%20(optional%2C%20default%3A%20https%3A%2F%2Fgitlab.com%2Fapi%2Fv4)%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22--rm%22%2C%22-i%22%2C%22oppieai%2Fmcp-gitlab%22%5D%2C%22env%22%3A%7B%22ACCESS_TOKEN%22%3A%22%24%7Binput%3Aaccess_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_url%7D%22%7D%7D&quality=insiders)
 
 For manual installation, add the following JSON block to your User Settings (JSON) file in VS Code. You can do this by pressing `Ctrl + Shift + P` and typing `Preferences: Open User Settings (JSON)`.
 
@@ -176,7 +176,7 @@ Optionally, you can add it to a file called `.vscode/mcp.json` in your workspace
     "inputs": [
       {
         "type": "promptString",
-        "id": "gitlab_token",
+        "id": "access_token",
         "description": "GitLab Personal Access Token",
         "password": true
       },
@@ -194,10 +194,10 @@ Optionally, you can add it to a file called `.vscode/mcp.json` in your workspace
           "run",
           "--rm",
           "-i",
-          "mcp/gitlab"
+          "oppieai/mcp-gitlab"
         ],
         "env": {
-          "GITLAB_PERSONAL_ACCESS_TOKEN": "${input:gitlab_token}",
+          "ACCESS_TOKEN": "${input:access_token}",
           "GITLAB_API_URL": "${input:gitlab_url}"
         }
       }
@@ -214,7 +214,7 @@ Optionally, you can add it to a file called `.vscode/mcp.json` in your workspace
     "inputs": [
       {
         "type": "promptString",
-        "id": "gitlab_token",
+        "id": "access_token",
         "description": "GitLab Personal Access Token",
         "password": true
       },
@@ -230,10 +230,10 @@ Optionally, you can add it to a file called `.vscode/mcp.json` in your workspace
         "command": "npx",
         "args": [
           "-y",
-          "@modelcontextprotocol/server-gitlab"
+          "@oppie-ai/mcp-gitlab"
         ],
         "env": {
-          "GITLAB_PERSONAL_ACCESS_TOKEN": "${input:gitlab_token}",
+          "ACCESS_TOKEN": "${input:access_token}",
           "GITLAB_API_URL": "${input:gitlab_url}"
         }
       }
@@ -247,12 +247,12 @@ Optionally, you can add it to a file called `.vscode/mcp.json` in your workspace
 Docker build:
 
 ```bash
-docker build -t vonwig/gitlab:mcp -f src/gitlab/Dockerfile .
+docker build -t oppieai/mcp-gitlab -f src/gitlab/Dockerfile .
 ```
 
 ## Environment Variables
 
-- `GITLAB_PERSONAL_ACCESS_TOKEN`: Your GitLab personal access token (required)
+- `ACCESS_TOKEN`: Your GitLab personal access token (required)
 - `GITLAB_API_URL`: Base URL for GitLab API (optional, defaults to `https://gitlab.com/api/v4`)
 
 ## License
