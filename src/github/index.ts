@@ -26,7 +26,6 @@ import {
   GitHubConflictError,
   isGitHubError,
 } from './common/errors.js';
-import { VERSION } from "./common/version.js";
 
 // If fetch doesn't exist in global scope, add it
 if (!globalThis.fetch) {
@@ -36,7 +35,7 @@ if (!globalThis.fetch) {
 const server = new Server(
   {
     name: "github-mcp-server",
-    version: VERSION,
+    version: '0.0.2',
   },
   {
     capabilities: {
@@ -47,7 +46,7 @@ const server = new Server(
 
 function formatGitHubError(error: GitHubError): string {
   let message = `GitHub API Error: ${error.message}`;
-  
+
   if (error instanceof GitHubValidationError) {
     message = `Validation Error: ${error.message}`;
     if (error.response) {
@@ -299,13 +298,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       case "create_issue": {
         const args = issues.CreateIssueSchema.parse(request.params.arguments);
         const { owner, repo, ...options } = args;
-        
+
         try {
           console.error(`[DEBUG] Attempting to create issue in ${owner}/${repo}`);
           console.error(`[DEBUG] Issue options:`, JSON.stringify(options, null, 2));
-          
+
           const issue = await issues.createIssue(owner, repo, options);
-          
+
           console.error(`[DEBUG] Issue created successfully`);
           return {
             content: [{ type: "text", text: JSON.stringify(issue, null, 2) }],
@@ -313,9 +312,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         } catch (err) {
           // Type guard for Error objects
           const error = err instanceof Error ? err : new Error(String(err));
-          
+
           console.error(`[ERROR] Failed to create issue:`, error);
-          
+
           if (error instanceof GitHubResourceNotFoundError) {
             throw new Error(
               `Repository '${owner}/${repo}' not found. Please verify:\n` +
@@ -324,7 +323,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
               `3. The owner and repository names are spelled correctly`
             );
           }
-          
+
           // Safely access error properties
           throw new Error(
             `Failed to create issue: ${error.message}${
