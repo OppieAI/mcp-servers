@@ -39,8 +39,8 @@ export async function githubRequest(
     ...options.headers,
   };
 
-  if (process.env.ACCESS_TOKEN) {
-    headers["Authorization"] = `Bearer ${process.env.ACCESS_TOKEN}`;
+  if (process.env.OPPIE_ACCESS_TOKEN) {
+    headers["Authorization"] = `Bearer ${process.env.OPPIE_ACCESS_TOKEN}`;
   }
 
   const response = await fetch(url, {

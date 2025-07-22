@@ -381,12 +381,12 @@ class SlackClient {
 }
 
 async function main() {
-  const botToken = process.env.ACCESS_TOKEN;
+  const botToken = process.env.OPPIE_ACCESS_TOKEN;
   const teamId = process.env.SLACK_TEAM_ID;
 
   if (!botToken) {
     console.error(
-      "Please set ACCESS_TOKEN and SLACK_TEAM_ID environment variables",
+      "Please set OPPIE_ACCESS_TOKEN and SLACK_TEAM_ID environment variables",
     );
     process.exit(1);
   }

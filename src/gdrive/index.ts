@@ -173,11 +173,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 
 async function initializeGoogleAuth() {
-  const accessToken = process.env.ACCESS_TOKEN;
+  const accessToken = process.env.OPPIE_ACCESS_TOKEN;
 
   if (!accessToken) {
-    console.error("ACCESS_TOKEN environment variable is required.");
-    console.error("Please set ACCESS_TOKEN with a valid Google OAuth access token.");
+    console.error("OPPIE_ACCESS_TOKEN environment variable is required.");
+    console.error("Please set OPPIE_ACCESS_TOKEN with a valid Google OAuth access token.");
     process.exit(1);
   }
 

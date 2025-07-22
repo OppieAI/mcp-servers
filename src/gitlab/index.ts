@@ -55,11 +55,11 @@ const server = new Server({
   }
 });
 
-const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
+const OPPIE_ACCESS_TOKEN = process.env.OPPIE_ACCESS_TOKEN;
 const GITLAB_API_URL = process.env.GITLAB_API_URL || 'https://gitlab.com/api/v4';
 
-if (!ACCESS_TOKEN) {
-  console.error("ACCESS_TOKEN environment variable is not set");
+if (!OPPIE_ACCESS_TOKEN) {
+  console.error("OPPIE_ACCESS_TOKEN environment variable is not set");
   process.exit(1);
 }
 
@@ -73,7 +73,7 @@ async function forkProject(
   const response = await fetch(url + queryParams, {
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${ACCESS_TOKEN}`,
+      "Authorization": `Bearer ${OPPIE_ACCESS_TOKEN}`,
       "Content-Type": "application/json"
     }
   });
@@ -94,7 +94,7 @@ async function createBranch(
     {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${ACCESS_TOKEN}`,
+        "Authorization": `Bearer ${OPPIE_ACCESS_TOKEN}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -126,7 +126,7 @@ async function getFileContents(
 
   const response = await fetch(url, {
     headers: {
-      "Authorization": `Bearer ${ACCESS_TOKEN}`
+      "Authorization": `Bearer ${OPPIE_ACCESS_TOKEN}`
     }
   });
 
@@ -152,7 +152,7 @@ async function createIssue(
     {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${ACCESS_TOKEN}`,
+        "Authorization": `Bearer ${OPPIE_ACCESS_TOKEN}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -181,7 +181,7 @@ async function createMergeRequest(
     {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${ACCESS_TOKEN}`,
+        "Authorization": `Bearer ${OPPIE_ACCESS_TOKEN}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -232,7 +232,7 @@ async function createOrUpdateFile(
   const response = await fetch(url, {
     method,
     headers: {
-      "Authorization": `Bearer ${ACCESS_TOKEN}`,
+      "Authorization": `Bearer ${OPPIE_ACCESS_TOKEN}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify(body)
@@ -255,7 +255,7 @@ async function createTree(
     {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${ACCESS_TOKEN}`,
+        "Authorization": `Bearer ${OPPIE_ACCESS_TOKEN}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -286,7 +286,7 @@ async function createCommit(
     {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${ACCESS_TOKEN}`,
+        "Authorization": `Bearer ${OPPIE_ACCESS_TOKEN}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -320,7 +320,7 @@ async function searchProjects(
 
   const response = await fetch(url.toString(), {
     headers: {
-      "Authorization": `Bearer ${ACCESS_TOKEN}`
+      "Authorization": `Bearer ${OPPIE_ACCESS_TOKEN}`
     }
   });
 
@@ -341,7 +341,7 @@ async function createRepository(
   const response = await fetch(`${GITLAB_API_URL}/projects`, {
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${ACCESS_TOKEN}`,
+      "Authorization": `Bearer ${OPPIE_ACCESS_TOKEN}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
