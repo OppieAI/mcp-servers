@@ -37,7 +37,7 @@ The server provides access to Google Drive files:
 
 This server uses a simplified authentication approach that requires only an access token:
 
-1. Set the `ACCESS_TOKEN` environment variable with your Google OAuth access token
+1. Set the `OPPIE_ACCESS_TOKEN` environment variable with your Google OAuth access token
 2. Run the server: `node ./dist/index.js`
 
 The server will authenticate using the provided access token without requiring OAuth client credentials or JSON files.
@@ -58,11 +58,11 @@ To use this server with the Claude Desktop app, add the following configuration 
         "-i",
         "--rm",
         "-e",
-        "ACCESS_TOKEN",
+        "OPPIE_ACCESS_TOKEN",
         "oppieai/mcp-gdrive"
       ],
       "env": {
-        "ACCESS_TOKEN": "<YOUR_TOKEN>"
+        "OPPIE_ACCESS_TOKEN": "<YOUR_TOKEN>"
       }
     }
   }
@@ -81,7 +81,7 @@ To use this server with the Claude Desktop app, add the following configuration 
         "@oppie-ai/mcp-gdrive"
       ],
       "env": {
-        "ACCESS_TOKEN": "<YOUR_TOKEN>"
+        "OPPIE_ACCESS_TOKEN": "<YOUR_TOKEN>"
       }
     }
   }
@@ -107,7 +107,7 @@ Optionally, you can add it to a file called `.vscode/mcp.json` in your workspace
         "args": ["./dist/index.js"],
         "cwd": "/path/to/gdrive/server",
         "env": {
-          "ACCESS_TOKEN": "your_google_oauth_access_token"
+          "OPPIE_ACCESS_TOKEN": "your_google_oauth_access_token"
         }
       }
     }

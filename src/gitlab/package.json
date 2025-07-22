@@ -1,6 +1,6 @@
 {
   "name": "@oppie-ai/mcp-gitlab",
-  "version": "0.6.2",
+  "version": "0.0.1",
   "description": "MCP server for using the GitLab API",
   "license": "MIT",
   "author": "Oppie AI",
